@@ -1,0 +1,221 @@
+{
+  "projects": [
+    {
+      "name": "admin-console",
+      "findings": [
+        {
+          "package": "@hengxin/ui-kit",
+          "range": "^2.3.0",
+          "registry": "https://registry.npmjs.org/",
+          "registry_kind": "public",
+          "public_versions": [],
+          "private_latest": "2.3.1",
+          "level": "高",
+          "status": "未被抢注,但解析走公网",
+          "detail": "解析走公网源(https://registry.npmjs.org/),公网暂无同名包——任何人现在注册该名字,下次构建即被拉取(经典 dependency confusion)。",
+          "fix": "在 .npmrc 为内部包配置私有源(scope 映射);并立即在公网注册该名字占位。"
+        },
+        {
+          "package": "@hengxin/utils",
+          "range": "^1.4.0",
+          "registry": "https://registry.npmjs.org/",
+          "registry_kind": "public",
+          "public_versions": [
+            "1.0.0",
+            "1.9.0",
+            "3.9.9"
+          ],
+          "private_latest": "1.4.2",
+          "level": "严重",
+          "status": "已被抢注,构建会拉到公网包",
+          "detail": "解析走公网源(https://registry.npmjs.org/),公网同名包版本 1.9.0 满足依赖范围 ^1.4.0(私有最新 1.4.2),npm install 会直接装到公网包。",
+          "fix": "立即在 .npmrc 为内部 scope 配置私有源;已装过的构建机清缓存重装并审计;在公网抢回/占位该名字。"
+        },
+        {
+          "package": "hx-tracker",
+          "range": "^1.2.0",
+          "registry": "https://registry.npmjs.org/",
+          "registry_kind": "public",
+          "public_versions": [
+            "1.5.0",
+            "2.0.1"
+          ],
+          "private_latest": "1.2.0",
+          "level": "严重",
+          "status": "已被抢注,构建会拉到公网包",
+          "detail": "解析走公网源(https://registry.npmjs.org/),公网同名包版本 1.5.0 满足依赖范围 ^1.2.0(私有最新 1.2.0),npm install 会直接装到公网包。",
+          "fix": "立即在 .npmrc 为内部 scope 配置私有源;已装过的构建机清缓存重装并审计;在公网抢回/占位该名字。"
+        }
+      ],
+      "type": "npm",
+      "level": "严重"
+    },
+    {
+      "name": "customer-h5",
+      "findings": [
+        {
+          "package": "@hengxin/utils",
+          "range": "^1.4.0",
+          "registry": "https://npm.companyx.cn",
+          "registry_kind": "private",
+          "public_versions": [
+            "1.0.0",
+            "1.9.0",
+            "3.9.9"
+          ],
+          "private_latest": "1.4.2",
+          "level": "中",
+          "status": "已被抢注(当前配置未受影响)",
+          "detail": "公网已存在同名包(版本 1.0.0, 1.9.0, 3.9.9),但 scope/默认源指向私有源,当前不会拉错。",
+          "fix": "保持 scope 源映射;建议公司把该名字在公网注册占位,防止他日被利用。"
+        },
+        {
+          "package": "hx-tracker",
+          "range": "^1.2.0",
+          "registry": "https://registry.npmmirror.com",
+          "registry_kind": "public",
+          "public_versions": [
+            "1.5.0",
+            "2.0.1"
+          ],
+          "private_latest": "1.2.0",
+          "level": "严重",
+          "status": "已被抢注,构建会拉到公网包",
+          "detail": "解析走公网源(https://registry.npmmirror.com),公网同名包版本 1.5.0 满足依赖范围 ^1.2.0(私有最新 1.2.0),npm install 会直接装到公网包。",
+          "fix": "立即在 .npmrc 为内部 scope 配置私有源;已装过的构建机清缓存重装并审计;在公网抢回/占位该名字。"
+        }
+      ],
+      "type": "npm",
+      "level": "严重"
+    },
+    {
+      "name": "order-service",
+      "findings": [
+        {
+          "package": "git.companyx.cn/common/golog",
+          "required": "v0.8.0",
+          "goproxy": [
+            "https://goproxy.cn",
+            "https://goproxy.companyx.cn",
+            "direct"
+          ],
+          "goprivate": "git.companyx.cn",
+          "gosumdb": "off",
+          "public_versions": [],
+          "private_latest": "v0.8.0",
+          "level": "低",
+          "status": "GOPRIVATE 覆盖,绕过代理直连",
+          "detail": "模块命中 GOPRIVATE/GONOPROXY,不走任何代理,公网同名包无影响。",
+          "fix": "保持;注意确认直连的 VCS 地址确实是内网。"
+        },
+        {
+          "package": "github.com/hengxin-dev/authlib",
+          "required": "v1.1.0",
+          "goproxy": [
+            "https://goproxy.cn",
+            "https://goproxy.companyx.cn",
+            "direct"
+          ],
+          "goprivate": "git.companyx.cn",
+          "gosumdb": "off",
+          "public_versions": [
+            "v1.0.0",
+            "v1.9.0"
+          ],
+          "private_latest": "v1.2.0",
+          "resolution": [
+            "https://goproxy.cn",
+            "public-proxy-hit",
+            "v1.9.0"
+          ],
+          "level": "严重",
+          "status": "已被抢注,构建会拉到公网模块",
+          "detail": "GOPROXY 中 https://goproxy.cn 先于私有源命中,公网同名模块最新 v1.9.0(私有最新 v1.2.0)，版本更高,go get -u/@latest 必拉公网包。GOSUMDB=off,校验和数据库防护已关闭。",
+          "fix": "把内网模块路径加入 GOPRIVATE(如 github.com/hengxin-dev/*,*.companyx.cn),并把私有代理放到 GOPROXY 首位;开启 GOSUMDB;审计近期构建产物。"
+        },
+        {
+          "package": "github.com/hengxin-dev/httpx",
+          "required": "v0.5.0",
+          "goproxy": [
+            "https://goproxy.cn",
+            "https://goproxy.companyx.cn",
+            "direct"
+          ],
+          "goprivate": "git.companyx.cn",
+          "gosumdb": "off",
+          "public_versions": [],
+          "private_latest": "v0.5.0",
+          "resolution": [
+            "https://goproxy.companyx.cn",
+            "private-proxy"
+          ],
+          "level": "中",
+          "status": "未被抢注,但公网代理排在私有代理之前",
+          "detail": "公网代理当前无此模块才落到私有代理;任何人抢注 github.com/hengxin-dev/httpx 后,排在前面的公网代理会优先命中,构建即被投毒。",
+          "fix": "把该模块路径加入 GOPRIVATE;并把私有代理调整到 GOPROXY 首位。"
+        }
+      ],
+      "type": "go",
+      "level": "严重"
+    },
+    {
+      "name": "payment-gateway",
+      "findings": [
+        {
+          "package": "git.companyx.cn/common/golog",
+          "required": "v0.8.0",
+          "goproxy": [
+            "https://goproxy.cn",
+            "direct"
+          ],
+          "goprivate": "",
+          "gosumdb": "sum.golang.org",
+          "public_versions": [],
+          "private_latest": "v0.8.0",
+          "resolution": [
+            "direct",
+            "private-vcs"
+          ],
+          "level": "低",
+          "status": "直连内网 VCS",
+          "detail": "代理未命中后 direct 到内网仓库,公网无法投毒;但模块名会泄露给公网代理(404 探测)。",
+          "fix": "建议加入 GOPRIVATE,避免向公网代理泄露内部模块名。"
+        },
+        {
+          "package": "github.com/hengxin-dev/authlib",
+          "required": "v1.2.0",
+          "goproxy": [
+            "https://goproxy.cn",
+            "direct"
+          ],
+          "goprivate": "",
+          "gosumdb": "sum.golang.org",
+          "public_versions": [
+            "v1.0.0",
+            "v1.9.0"
+          ],
+          "private_latest": "v1.2.0",
+          "resolution": [
+            "https://goproxy.cn",
+            "public-proxy-hit",
+            "v1.9.0"
+          ],
+          "level": "严重",
+          "status": "已被抢注,构建会拉到公网模块",
+          "detail": "GOPROXY 中 https://goproxy.cn 先于私有源命中,公网同名模块最新 v1.9.0(私有最新 v1.2.0)，版本更高,go get -u/@latest 必拉公网包。GOSUMDB 开启,但内部模块未纳入 GOPRIVATE 时校验会失败(表现为构建报错而非拉错包)。",
+          "fix": "把内网模块路径加入 GOPRIVATE(如 github.com/hengxin-dev/*,*.companyx.cn),并把私有代理放到 GOPROXY 首位;开启 GOSUMDB;审计近期构建产物。"
+        }
+      ],
+      "type": "go",
+      "level": "严重"
+    }
+  ],
+  "unreferenced_private_packages": [
+    {
+      "package": "@hengxin/charts",
+      "ecosystem": "npm",
+      "squatted": false,
+      "public_versions": []
+    }
+  ]
+}

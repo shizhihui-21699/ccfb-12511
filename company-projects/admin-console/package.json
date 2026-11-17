@@ -1,0 +1,20 @@
+{
+  "name": "admin-console",
+  "version": "4.2.0",
+  "private": true,
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build"
+  },
+  "dependencies": {
+    "vue": "^3.4.0",
+    "element-plus": "^2.8.0",
+    "axios": "^1.7.0",
+    "@hengxin/ui-kit": "^2.3.0",
+    "@hengxin/utils": "^1.4.0",
+    "hx-tracker": "^1.2.0"
+  },
+  "devDependencies": {
+    "vite": "^5.4.0"
+  }
+}

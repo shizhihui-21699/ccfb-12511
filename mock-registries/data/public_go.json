@@ -1,0 +1,14 @@
+{
+  "github.com/gin-gonic/gin": {
+    "versions": ["v1.9.1", "v1.10.0", "v1.11.0"]
+  },
+  "github.com/go-sql-driver/mysql": {
+    "versions": ["v1.8.1", "v1.9.0"]
+  },
+  "go.uber.org/zap": {
+    "versions": ["v1.26.0", "v1.27.0"]
+  },
+  "github.com/hengxin-dev/authlib": {
+    "versions": ["v1.0.0", "v1.9.0"]
+  }
+}

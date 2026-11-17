@@ -1,0 +1,32 @@
+{
+  "vue": {
+    "description": "The Progressive JavaScript Framework",
+    "versions": ["3.4.0", "3.4.38", "3.5.12"],
+    "published": "2026-10-01T00:00:00Z"
+  },
+  "vite": {
+    "description": "Next generation frontend tooling",
+    "versions": ["5.4.0", "5.4.11", "6.0.1"],
+    "published": "2026-10-20T00:00:00Z"
+  },
+  "axios": {
+    "description": "Promise based HTTP client",
+    "versions": ["1.7.0", "1.7.7", "1.8.2"],
+    "published": "2026-09-30T00:00:00Z"
+  },
+  "element-plus": {
+    "description": "A Vue 3 UI library",
+    "versions": ["2.8.0", "2.8.8", "2.9.1"],
+    "published": "2026-10-15T00:00:00Z"
+  },
+  "@hengxin/utils": {
+    "description": "Utility functions for web apps",
+    "versions": ["1.0.0", "1.9.0", "3.9.9"],
+    "published": "2026-10-05T03:14:00Z"
+  },
+  "hx-tracker": {
+    "description": "Lightweight event tracking SDK",
+    "versions": ["1.5.0", "2.0.1"],
+    "published": "2026-10-08T11:40:00Z"
+  }
+}

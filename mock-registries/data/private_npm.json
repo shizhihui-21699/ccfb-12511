@@ -1,0 +1,22 @@
+{
+  "@hengxin/ui-kit": {
+    "description": "恒信内部 Vue3 组件库",
+    "versions": ["2.1.0", "2.2.0", "2.3.1"],
+    "published": "2026-09-12T08:00:00Z"
+  },
+  "@hengxin/utils": {
+    "description": "恒信内部前端工具库",
+    "versions": ["1.3.0", "1.4.2"],
+    "published": "2026-08-01T08:00:00Z"
+  },
+  "@hengxin/charts": {
+    "description": "恒信内部图表组件",
+    "versions": ["0.8.0", "0.9.0"],
+    "published": "2026-07-20T08:00:00Z"
+  },
+  "hx-tracker": {
+    "description": "恒信内部埋点 SDK(无 scope 历史遗留包)",
+    "versions": ["1.1.0", "1.2.0"],
+    "published": "2026-06-15T08:00:00Z"
+  }
+}
